@@ -1,5 +1,8 @@
 <?php
+require 'config.php';
 
+$user = $_POST['email'];
+$pass = $_POST['password'];
 /*
  * Dit is een webserver only script, waar je alleen mag komen als je via een form
  * data verstuurd, en niet als je via de url hier naar toe komt. Iedereen die dat doet
@@ -11,8 +14,32 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST' ) {
     exit;
 }
 
-if ( $_POST['type'] === 'login' ) {
-    var_dump($_POST);
+
+if ($_POST['type'] === 'login') {
+    if (is_null($_POST["email"]) || is_null($_POST["password"])) {
+        $message = '<label>All fields are required</label>';
+    }
+    else {
+        $query = "SELECT * FROM accounts WHERE email = :email AND password = :password";
+        $statement = $db->prepare($query);
+        $statement->execute(
+            array(
+                ':email' => $_POST["email"],
+                ':password' => $_POST["password"]
+            )
+        );
+        $count = $statement->rowCount();
+        if ($count > 0) {
+            $_SESSION["email"] = $_POST["email"];
+            header("Location:admin.php");
+        }
+        else
+        {
+            header('Location:login.php');
+
+        }
+}
+
     /*
      * Hier komen we als we de login form data versturen.
      * things to do:
@@ -28,7 +55,17 @@ if ( $_POST['type'] === 'login' ) {
 }
 
 if ($_POST['type'] === 'register') {
-    var_dump($_POST);
+    $hashed_password = password_hash($pass, PASSWORD_DEFAULT);
+    $sql = "INSERT INTO accounts(email, password) 
+        VALUES (:email, :password)";
+
+    $prepare = $db->prepare($sql);
+    $prepare->execute([
+        ':email' => $user,
+        ':password' => $hashed_password
+    ]);
+    header('Location:login.php');
+    /*var_dump($_POST);
     /*
      * Hier komen we als we de register form data versturen
      * things to do:
