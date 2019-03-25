@@ -23,6 +23,7 @@
 
   <!-- Add your site or application content here -->
   <header>
+    
     <div class="container">
       <div class="header">
         <div class="title">
@@ -37,44 +38,39 @@
       
     
   </header>
-  
+
   <main>
-    <div class="banner">
-      <div class="container">
 
-        <img src="img/bannerbackground.png" alt="teamwork.png">
-        <div class="centered">
-          <h2>N<span>A</span>P</h2>
-        </div>
-        <div class="bottom">
-          <span>For all your project downloads, and PHP and HTML/CSS issues.</span>
-        </div>
+    <div class="signup">
+      <div class="container">
+        <h3>Sign-Up to NAP</h3>
+        <div class="signupform">
+          <form action="action_page.php">
+
+          <label for="email"><b>E-Mail</b></label>
+          <input type="email" placeholder="Enter E-mail" name="email" required>
+
+          <label for="psw"><b>Password</b></label>
+          <input type="password" placeholder="Enter Password" name="psw" required>
+          
+          <label>
+            <input type="checkbox" checked="checked" name="remember"><b>I Agree to the Terms and Conditions of NAP</b>
+          </label>
+
+          <button type="submit">Sign Up!</button>
+        </form>
+        </div> <!-- end of form -->
+
+        <p>Already have an account?</p>
+        <p>Login to NAP <a href="login.html">HERE.</a></p>
         
-      </div>
-      
-    </div>
+      </div> <!-- end of container -->
+    </div> <!-- end of login -->
 
-    <div class="information">
-      <div class="container">
-        <h3>Information</h3>
-        <div class="information-items">
-          <div class="information-item">
-            <h4>Lorem</h4>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias nostrum nulla ipsam neque repellat sapiente impedit tenetur sit, sequi, fugiat maxime! Eius impedit consectetur delectus suscipit. Repellendus id earum, illum.</p>
-          </div>
-          <div class="information-item">
-            <h4>Lorem</h4>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius voluptatum ut aliquam magni velit, necessitatibus quam ab itaque sunt quo ad, dicta minus maxime consequuntur. Aperiam iusto labore eligendi ratione.</p>
-          </div>
-          <div class="information-item">
-            <h4>Lorem</h4>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est animi alias quo unde neque, asperiores mollitia, ipsa iusto perspiciatis facilis repellendus, veritatis omnis! Necessitatibus eligendi, nisi vero animi commodi illum?</p>
-          </div>
-        </div>
-      </div>
-    </div>
-    
-    
+
+
+
+
   </main>
 
   <footer>
@@ -110,5 +106,4 @@
   </footer>
 
 </body>
-
 </html>
